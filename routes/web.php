@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/produk/create', [CheckoutController::class, 'create_produk']);
+# Route::post('/produk/create', [CheckoutController::class, 'create_produk']);
 
 Route::get('/', function () {
     return view('index');
@@ -30,12 +30,7 @@ Route::get('/category-foods', function () {
 Route::get('/order', function () {
     return view('order');
 });
-Route::get('/register', function () {
-    return view('register');
-});
-Route::get('/login', function () {
-    return view('login');
-});
+
 Route::get('/rizaldi', function () {
     return view('rizaldi');
 });
@@ -45,3 +40,15 @@ Route::get('/arif', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+Auth::routes();
+Route::get('/add-categories', function () {
+    return view('add-categories');
+});
+Route::get('/add-foods', function () {
+    return view('add-foods');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'createcate'])->name('addcategories');
+
+Route::resource('/test', [App\Http\Controllers\CategoryController::class, 'index']);
