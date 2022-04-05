@@ -41,7 +41,15 @@
                                 <a href="/category/edit/{{ $category->id }}" type="button" class="btn btn-success">Edit</a>
                             </div>
                         </div>
+                    @else
+                        <div class="card text-white float-container border-0" href="#">
+                            <img src="{{ $category->image }}" class="card-img" alt="{{ $category->image }}">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title float-text ">{{ $category->name }}</h5>
+                            </div>
+                        </div>
                     @endif
+
                 @endguest
             @endforeach
 
