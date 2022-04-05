@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+        $user = Auth::user();
+        // $categories=DB::table('categories')->get();
+        $categories = Category::all();
+        $foods = Food::all();
+        // $foods = DB::table('foods')->get();
+        return view('categories',['user' => $user,'categories' =>$categories,'foods' =>$foods]);
     }
 
     /**

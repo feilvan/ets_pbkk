@@ -10,10 +10,12 @@ class Food extends Model
     protected $guarded = ['id'];
     protected $fillable = [
         'name',
-        'category',
+        'categoryid',
         'price',
         'description',
-        'image'
+        'image',
+        'featured',
+        'active',
     ];
     use HasFactory;
 }

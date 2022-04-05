@@ -1,5 +1,5 @@
 @extends('template')
-
+@section('title', 'Add Category')
 @section('content')
     <div class="container  my-5">
         <h1 class="text-center">Add Categories</h1>

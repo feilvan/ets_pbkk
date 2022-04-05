@@ -30,8 +30,8 @@ class HomeController extends Controller
         $user = Auth::user();
         // $categories=DB::table('categories')->get();
         $categories = Category::all();
-        // $foods = Food::all();
-        $foods = DB::table('foods')->get();
+        $foods = Food::all();
+        // $foods = DB::table('foods')->get();
         return view('index',['user' => $user,'categories' =>$categories,'foods' =>$foods]);
     }
 }

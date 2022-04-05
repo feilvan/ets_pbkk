@@ -1,8 +1,8 @@
 @extends('template')
-
+@section('title', 'Edit Category')
 @section('content')
     <div class="container  my-5">
-        <h1 class="text-center">Add Categories</h1>
+        <h1 class="text-center">Edit Categories</h1>
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
