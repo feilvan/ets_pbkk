@@ -9,7 +9,7 @@
         @guest
         @else
             @if (Auth::user()->email == '123@123.123')
-                <a href="/add-categories" class="btn btn-primary" style="margin-left:150px;">Add Categorie</a>
+                <a href="/add-categories" class="btn btn-primary" style="margin-left:150px;">Add Category</a>
             @endif
         @endguest
 
@@ -21,11 +21,11 @@
 
         <div class="container row row-cols-1 row-cols-xxl-3 row-cols-md-3 g-4">
             <!-- <a class="card text-white float-container border-0" href="#">
-                                            <img src="images/pizza.jpg" class="card-img" alt="Pizza">
-                                            <div class="card-img-overlay">
-                                                <h5 class="card-title float-text ">Pizza</h5>
-                                            </div>
-                                        </a> -->
+                                                <img src="images/pizza.jpg" class="card-img" alt="Pizza">
+                                                <div class="card-img-overlay">
+                                                    <h5 class="card-title float-text ">Pizza</h5>
+                                                </div>
+                                            </a> -->
             @foreach ($categories as $category)
                 @guest
                     <a class="card text-white float-container border-0" href="#">
@@ -54,11 +54,11 @@
 
 
             <!-- <a class="card text-white float-container border-0" href="#">
-                                                                                                                                    <img src="images/momo.jpg" class="card-img" alt="Momo">
-                                                                                                                                    <div class="card-img-overlay">
-                                                                                                                                        <h5 class="card-title float-text ">Momo</h5>
-                                                                                                                                    </div>
-                                                                                                                                </a> -->
+                                                                                                                                        <img src="images/momo.jpg" class="card-img" alt="Momo">
+                                                                                                                                        <div class="card-img-overlay">
+                                                                                                                                            <h5 class="card-title float-text ">Momo</h5>
+                                                                                                                                        </div>
+                                                                                                                                    </a> -->
 
         </div>
 
