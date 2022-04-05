@@ -48,7 +48,20 @@ Route::get('/add-foods', function () {
     return view('add-foods');
 });
 
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'createcate'])->name('addcategories');
+Route::get('/add-categories', [App\Http\Controllers\CategoryController::class, 'create']);
+Route::get('/category/edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit']);
+Route::post('/create-category', [App\Http\Controllers\CategoryController::class, 'store']);
+Route::post('/update-category', [App\Http\Controllers\CategoryController::class, 'update']);
+Route::get('/category/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy']);
 
-Route::resource('/test', [App\Http\Controllers\CategoryController::class, 'index']);
+
+Route::get('/add-foods', [App\Http\Controllers\FoodController::class, 'create']);
+Route::get('/food/edit/{food}', [App\Http\Controllers\FoodController::class, 'edit']);
+Route::post('/create-food', [App\Http\Controllers\FoodController::class, 'store']);
+Route::post('/update-food', [App\Http\Controllers\FoodController::class, 'update']);
+Route::get('/food/destroy/{food}', [App\Http\Controllers\FoodController::class, 'destroy']);
+
+
+// Route::resource('/test', [App\Http\Controllers\CategoryController::class, 'index']);

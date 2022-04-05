@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('add-categories');
+        
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('add-categories');
     }
 
     /**
@@ -35,10 +37,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData['name']= $request->name;
-        Menu::create($validatedData);
+    //     $validatedData['name']= $request->name;
+    //     Category::create($validatedData);
 
-        return redirect('/add-categories');
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+            'image' => $request->image,
+        ]);
+
+        // return redirect('/add-categories');
+        return redirect('add-categories')->with('status', 'Data Sukses Ditambah');
     }
 
     /**
@@ -58,9 +71,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $category = Category::find($id);
+        return view('edit-categories',['user' => $user,'category' =>$category]);
     }
 
     /**
@@ -72,10 +87,25 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        Menu::where('id',$request->id)
-            ->update($validatedData);
+        // Menu::where('id',$request->id)
+        //     ->update($validatedData);
         
-        return redirect('/add-categories');
+        // return redirect('/add-categories');
+        $id=$request->id;
+        $link="category/edit/$id";
+
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required',
+        ]);
+
+        Category::where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'image'=>$request->image
+            ]);
+
+            return redirect($link)->with('status', 'Data Sukses Diupdate');
     }
 
     /**
@@ -84,8 +114,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        // $categorys=DB::table('categorys')->get();
+        Category::destroy($id);
+        return redirect('home')->with('status', 'Data Sukses Dihapus');
     }
 }

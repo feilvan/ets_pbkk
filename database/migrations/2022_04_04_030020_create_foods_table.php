@@ -20,10 +20,10 @@ return new class extends Migration
             $table->decimal('price', $precision = 10, $scale = 2);
             $table->string('image_name');
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categorys');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->string('featured');
-            $table->string('active');  
-            
+            $table->string('active'); 
+            $table->timestamps();
         });
     }
 
